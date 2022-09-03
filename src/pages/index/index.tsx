@@ -24,7 +24,7 @@ const watermarkConfig: WatermarkOptions = {
   textBaseline: "alphabetic",
   blindFontSize: 16,
   blindOpacity: 0.005,
-  text: ["测试水印", "123", "456"],
+  text: ["测试小程序", "张三", "2022-09-04"],
   blindText: "测试盲水印",
 };
 
