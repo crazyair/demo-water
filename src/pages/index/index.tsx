@@ -1,4 +1,4 @@
-import { View } from "@tarojs/components";
+import { Button, View } from "@tarojs/components";
 import Taro from "@tarojs/taro";
 import { useEffect, useState } from "react";
 import "./index.less";
@@ -9,22 +9,22 @@ const watermarkConfig: WatermarkOptions = {
   gapX: 50,
   gapY: 50,
   offsetLeft: 0,
-  offsetTop: 50,
+  offsetTop: 70,
   width: 100,
-  height: 64,
-  opacity: 0.15,
+  height: 100,
+  opacity: 0.25,
   rotate: -22,
   fontSize: 16,
   fontStyle: "normal",
   fontVariant: "normal",
-  fontWeight: "300",
+  fontWeight: "100",
   fontColor: "#000",
-  fontFamily: "sans-serif",
+  fontFamily: "normal",
   textAlign: "center",
   textBaseline: "alphabetic",
   blindFontSize: 16,
   blindOpacity: 0.005,
-  text: "测试水印",
+  text: ["测试水印", "123", "456"],
   blindText: "测试盲水印",
 };
 
@@ -36,7 +36,6 @@ const Index = () => {
 
       const canvasWidth = (Number(gapX) + Number(width)) * 1;
       const canvasHeight = (Number(gapY) + Number(height)) * 1;
-
       // 把图片画到离屏 canvas 上
       const canvas = (Taro.createOffscreenCanvas as any)({
         type: "2d",
@@ -57,13 +56,26 @@ const Index = () => {
           onClick={() => Taro.showToast({ title: "click" })}
           style={{
             background: "red",
-            opacity: 0.5,
             height: 200,
             width: 200,
           }}
         />
-        <View style={{ height: 2000 }}>111</View>
+        <Button
+          type="primary"
+          onClick={() => Taro.showToast({ title: "click" })}
+        >
+          按钮
+        </Button>
+        <View style={{ height: 2000 }} />
       </View>
+      {/* <View
+        style={{
+          height: 150,
+          width: 150,
+          border: "1px solid",
+          backgroundImage: `url(${url})`,
+        }}
+      /> */}
     </View>
   );
 };
