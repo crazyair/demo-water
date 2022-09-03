@@ -29,7 +29,11 @@ const watermarkConfig: WatermarkOptions = {
 };
 
 const Index = () => {
-  const [url, setUrl] = useState("");
+  const [backgroundConfig, setBackgroundConfig] = useState<{
+    width: number;
+    height: number;
+    url: string;
+  }>({ height: 0, width: 0, url: "" });
   useEffect(() => {
     const func = async () => {
       const { gapX, width, gapY, height } = watermarkConfig;
@@ -43,7 +47,7 @@ const Index = () => {
         height: canvasHeight,
       }) as HTMLCanvasElement;
       const result = await getDrawPattern(canvas, watermarkConfig);
-      setUrl(result.url);
+      setBackgroundConfig(result);
     };
     func();
   }, []);
@@ -51,7 +55,15 @@ const Index = () => {
   return (
     <View>
       <View className="water">
-        <View className="canvas" style={{ backgroundImage: `url(${url})` }} />
+        <View
+          className="canvas"
+          style={{
+            backgroundImage: `url(${backgroundConfig.url})`,
+            backgroundPosition: `${backgroundConfig.width / 2}px ${
+              backgroundConfig.height / 2
+            }px , 0 0`,
+          }}
+        />
         <View
           onClick={() => Taro.showToast({ title: "click" })}
           style={{
