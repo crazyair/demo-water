@@ -9,7 +9,7 @@ const watermarkConfig: WatermarkOptions = {
   gapX: 50,
   gapY: 50,
   offsetLeft: 0,
-  offsetTop: 70,
+  offsetTop: 0,
   width: 100,
   height: 100,
   opacity: 0.25,
